@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro B2B - Prova de Conceito</title>
+    <style>
+        /* NOVA PALETA DE CORES: Branco, Pretos Leves e Amarelo Forte */
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #F8F9FA; display: flex; justify-content: center; padding: 40px; color: #333333; }
+        .card { background: white; padding: 35px; border-radius: 4px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); width: 100%; max-width: 600px; border-top: 4px solid #FFCC00; }
+        
+        /* Container da Logo */
+        .logo-container { text-align: center; margin-bottom: 25px; }
+        .logo-container img { max-height: 60px; max-width: 100%; object-fit: contain; }
+        
+        h2 { margin-top: 0; color: #222222; font-size: 20px; text-align: center; margin-bottom: 25px;}
+        
+        .step { display: none; }
+        .step.active { display: block; }
+        
+        /* Barra de Progresso com destaque Amarelo */
+        .progress-bar { display: flex; justify-content: space-between; margin-bottom: 30px; font-size: 13px; color: #888888; font-weight: 600; border-bottom: 2px solid #EEEEEE; padding-bottom: 10px; text-transform: uppercase; }
+        .progress-bar span.active-step { color: #111111; border-bottom: 3px solid #FFCC00; margin-bottom: -12px; padding-bottom: 10px; }
+
+        .form-group { margin-bottom: 18px; }
+        .form-row { display: flex; gap: 16px; }
+        .form-row .form-group { flex: 1; }
+        
+        label { display: block; font-size: 12px; font-weight: 600; color: #555555; margin-bottom: 6px; }
+        input, select { width: 100%; padding: 10px 12px; box-sizing: border-box; border: 1px solid #DDDDDD; border-radius: 4px; background-color: #FAFAFA; font-size: 14px; transition: all 0.2s; color: #333333; }
+        
+        /* Efeito de foco Amarelo nos inputs */
+        input:focus, select:focus { border-color: #FFCC00; outline: none; background-color: white; box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.15); }
+        input[type="file"] { padding: 8px; background-color: white; cursor: pointer; }
+
+        .button-group { display: flex; justify-content: space-between; margin-top: 30px; border-top: 1px solid #EEEEEE; padding-top: 20px; }
+        button { padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: 600; transition: background 0.2s; }
+        
+        /* Botões Primários Amarelos com texto escuro para contraste */
+        .btn-primary { background-color: #FFCC00; color: #111111; }
+        .btn-primary:hover { background-color: #E6B800; }
+        .btn-secondary { background-color: #F0F0F0; color: #444444; }
+        .btn-secondary:hover { background-color: #E0E0E0; }
+
+        /* Estilos da Tela de Sucesso */
+        #successScreen { display: none; text-align: center; padding: 20px 0; }
+        .success-icon { color: #FFCC00; font-size: 54px; margin-bottom: 15px; }
+        .success-title { color: #222222; font-size: 24px; font-weight: 700; margin-bottom: 10px; }
+        .success-text { color: #555555; font-size: 14px; margin-bottom: 25px; line-height: 1.6; }
+        .json-output { background-color: #FAFAFA; padding: 15px; border-radius: 4px; font-family: "Courier New", Courier, monospace; font-size: 13px; white-space: pre-wrap; word-wrap: break-word; border-left: 4px solid #FFCC00; text-align: left; color: #333333; border-top: 1px solid #EEEEEE; border-right: 1px solid #EEEEEE; border-bottom: 1px solid #EEEEEE;}
+        
+        /* Validação e Modal Customizado */
+        .text-danger { color: #D32F2F; font-weight: bold; }
+        .input-error { border-color: #D32F2F !important; background-color: #FFEBEE !important; }
+        
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000; }
+        .modal-box { background: white; padding: 25px; border-radius: 8px; width: 90%; max-width: 400px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.2); border-top: 4px solid #D32F2F; }
+        .modal-title { font-size: 18px; font-weight: 700; color: #333; margin-bottom: 10px; }
+        .modal-text { font-size: 14px; color: #555; margin-bottom: 20px; line-height: 1.5; white-space: pre-line; }
+        .btn-modal { background-color: #D32F2F; color: white; padding: 10px 24px; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; transition: background 0.2s; }
+        .btn-modal:hover { background-color: #B71C1C; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    
+    <div class="logo-container" id="logoContainer">
+        <img src="logo.png" alt="Logo da Empresa">
+    </div>
+
+    <h2 id="formTitle">Formulário inteligente Prova de Conceito</h2>
+    
+    <div class="progress-bar" id="progressIndicator">
+        <span class="active-step">1. Fiscais</span>
+        <span>2. Endereço</span>
+        <span>3. Contato</span>
+        <span>4. Documentos</span>
+    </div>
+
+    <form id="b2bForm" novalidate>
+        
+        <div class="step active" id="step1">
+            <div class="form-group">
+                <label for="razaoSocial">Razão Social <span class="text-danger">*</span></label>
+                <input type="text" id="razaoSocial" required>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="cnpj">CNPJ <span class="text-danger">*</span></label>
+                    <input type="text" id="cnpj" placeholder="00.000.000/0000-00" required>
+                </div>
+                <div class="form-group">
+                    <label for="inscricaoEstadual">Inscrição Estadual (Opcional)</label>
+                    <input type="text" id="inscricaoEstadual" placeholder="Isento ou Número">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="regimeTributario">Regime Tributário (Se houver)</label>
+                <select id="regimeTributario">
+                    <option value="">Não informado</option>
+                    <option value="Simples Nacional">Simples Nacional</option>
+                    <option value="Lucro Presumido">Lucro Presumido</option>
+                    <option value="Lucro Real">Lucro Real</option>
+                </select>
+            </div>
+
+            <div class="button-group">
+                <div></div>
+                <button type="button" class="btn-primary" onclick="validateAndNext(1, 1)">Próximo</button>
+            </div>
+        </div>
+
+        <div class="step" id="step2">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="cep">CEP <span class="text-danger">*</span></label>
+                    <input type="text" id="cep" placeholder="00000-000" required>
+                </div>
+                <div class="form-group">
+                    <label for="cidadeUf">Cidade / UF <span class="text-danger">*</span></label>
+                    <input type="text" id="cidadeUf" placeholder="Ex: Curitiba/PR" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="endereco">Endereço Completo <span class="text-danger">*</span></label>
+                <input type="text" id="endereco" placeholder="Rua, Número, Bairro, Complemento" required>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn-secondary" onclick="changeStep(0)">Voltar</button>
+                <button type="button" class="btn-primary" onclick="validateAndNext(2, 2)">Próximo</button>
+            </div>
+        </div>
+
+        <div class="step" id="step3">
+            <div class="form-group">
+                <label for="nomeContato">Nome do Contato <span class="text-danger">*</span></label>
+                <input type="text" id="nomeContato" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">E-mail <span class="text-danger">*</span></label>
+                    <input type="email" id="email" placeholder="comercial@empresa.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone <span class="text-danger">*</span></label>
+                    <input type="tel" id="telefone" placeholder="(00) 00000-0000" required>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn-secondary" onclick="changeStep(1)">Voltar</button>
+                <button type="button" class="btn-primary" onclick="validateAndNext(3, 3)">Próximo</button>
+            </div>
+        </div>
+
+        <div class="step" id="step4">
+            <div class="form-group">
+                <label for="cartaoCnpj">Cartão CNPJ (PDF ou Imagem) <span class="text-danger">*</span></label>
+                <input type="file" id="cartaoCnpj" accept=".pdf, .jpg, .jpeg, .png" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="contratoSocial">Contrato Social Atualizado (PDF) <span class="text-danger">*</span></label>
+                <input type="file" id="contratoSocial" accept=".pdf" required>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="btn-secondary" onclick="changeStep(2)">Voltar</button>
+                <button type="submit" class="btn-primary">Finalizar Cadastro</button>
+            </div>
+        </div>
+
+    </form>
+
+    <div id="successScreen">
+        <div class="success-icon">✓</div>
+        <div class="success-title">Cadastro Finalizado!</div>
+        <div class="success-text">
+            <strong>Aqui os dados são estruturados em formato JSON para realização das consultas cadastrais SEFAZ/Sintegra e para integração com o ERP Datasul por meio de APIs.</strong><br>
+            Em um sistema real, essa estrutura seria enviada automaticamente para o backend.
+        </div>
+        <pre id="jsonResult" class="json-output"></pre>
+        <button type="button" class="btn-secondary" style="margin-top: 20px;" onclick="location.reload()">Fazer novo teste</button>
+    </div>
+
+</div>
+
+<!-- Modal Customizado de Alerta -->
+<div class="modal-overlay" id="customAlertModal">
+    <div class="modal-box">
+        <div class="modal-title">Atenção ao Preenchimento</div>
+        <div class="modal-text" id="customAlertText">Existem campos obrigatórios ausentes.</div>
+        <button class="btn-modal" onclick="closeModal()">Entendi</button>
+    </div>
+</div>
+
+<script>
+    const steps = document.querySelectorAll('.step');
+    const indicators = document.querySelectorAll('.progress-bar span');
+
+    function changeStep(targetIndex) {
+        steps.forEach(step => step.classList.remove('active'));
+        indicators.forEach(ind => ind.classList.remove('active-step'));
+        
+        steps[targetIndex].classList.add('active');
+        indicators[targetIndex].classList.add('active-step');
+    }
+
+    function showModal(msg) {
+        document.getElementById('customAlertText').innerText = msg;
+        document.getElementById('customAlertModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('customAlertModal').style.display = 'none';
+    }
+
+    function validateAndNext(currentStepNum, targetIndex) {
+        const currentStepDiv = document.getElementById('step' + currentStepNum);
+        const requiredInputs = currentStepDiv.querySelectorAll('input[required]');
+        let isValid = true;
+
+        requiredInputs.forEach(input => {
+            input.classList.remove('input-error');
+            // Se o campo estiver vazio
+            if (!input.value.trim()) {
+                isValid = false;
+                input.classList.add('input-error');
+            }
+        });
+
+        if (isValid) {
+            changeStep(targetIndex);
+        } else {
+            showModal("SISTEMA (Gateway de Validação):\nExistem campos obrigatórios ausentes nesta etapa.\n\nPor favor, preencha as caixas destacadas em vermelho para prosseguir.");
+        }
+    }
+
+    document.getElementById('b2bForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Validação final apenas para a etapa 4 (Documentos)
+        const currentStepDiv = document.getElementById('step4');
+        const requiredInputs = currentStepDiv.querySelectorAll('input[required]');
+        let isFinalValid = true;
+
+        requiredInputs.forEach(input => {
+            input.classList.remove('input-error');
+            if (input.files.length === 0) {
+                isFinalValid = false;
+                input.classList.add('input-error');
+            }
+        });
+        
+        if (!isFinalValid) {
+            showModal("SISTEMA (Gateway de Validação):\nOs anexos de documentos são obrigatórios.\n\nPor favor, insira os arquivos solicitados para finalizar a automação.");
+            return; // Interrompe o fluxo
+        }
+
+        const fileContratoInput = document.getElementById('contratoSocial');
+        const fileCnpjInput = document.getElementById('cartaoCnpj');
+        const fileCnpj = fileCnpjInput.files.length > 0 ? fileCnpjInput.files[0].name : "Nenhum arquivo anexado";
+        const fileContrato = fileContratoInput.files.length > 0 ? fileContratoInput.files[0].name : "Nenhum arquivo anexado";
+
+        const dadosCadastroB2B = {
+            dados_fiscais: {
+                razao_social: document.getElementById('razaoSocial').value,
+                cnpj: document.getElementById('cnpj').value,
+                inscricao_estadual: document.getElementById('inscricaoEstadual').value || "Não Informado",
+                regime_tributario: document.getElementById('regimeTributario').value || "Não Informado"
+            },
+            localizacao: {
+                cep: document.getElementById('cep').value,
+                cidade_uf: document.getElementById('cidadeUf').value,
+                endereco_completo: document.getElementById('endereco').value
+            },
+            contato: {
+                nome_contato: document.getElementById('nomeContato').value,
+                email: document.getElementById('email').value,
+                telefone: document.getElementById('telefone').value
+            },
+            documentos: {
+                cartao_cnpj: fileCnpj,
+                contrato_social: fileContrato
+            },
+            metadados_sistema: {
+                criado_em: new Date().toISOString(),
+                status_ticket: "FINALIZADO - ENVIADO PARA OCR/API"
+            }
+        };
+
+        const jsonFormatado = JSON.stringify(dadosCadastroB2B, null, 4);
+
+        // Esconde formulário e cabeçalhos
+        document.getElementById('b2bForm').style.display = 'none';
+        document.getElementById('progressIndicator').style.display = 'none';
+        document.getElementById('formTitle').style.display = 'none';
+
+        document.getElementById('jsonResult').textContent = jsonFormatado;
+        document.getElementById('successScreen').style.display = 'block';
+    });
+</script>
+
+</body>
+</html>
