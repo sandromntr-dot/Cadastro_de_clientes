@@ -1,7 +1,7 @@
 # Formulário inteligente - Prova de Conceito (PoC)
 
 ## 🎯 Objetivo do Projeto
-Esta Prova de Conceito (PoC) foi desenvolvida como parte da resolução de um case técnico para a vaga de **Analista de Automação e IA**. O objetivo central é demonstrar como a modernização da entrada de dados — saindo de e-mails não estruturados para um formulário inteligente — pode reduzir drasticamente o lead time e o retrabalho no cadastro de novos clientes.
+Esta Prova de Conceito (PoC) foi desenvolvida como parte da resolução real de um case técnico para a vaga de **Analista de Automação e IA**. O objetivo central é demonstrar como a modernização da entrada de dados — saindo de e-mails não estruturados para um formulário inteligente — pode reduzir drasticamente o lead time e o retrabalho no cadastro de novos clientes.
 
 ## 🚀 O Problema
 No cenário atual (AS-IS), a empresa recebe solicitações de cadastro por e-mail, gerando:
