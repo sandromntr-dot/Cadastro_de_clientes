@@ -22,6 +22,12 @@ Para esta Prova de Conceito, **foi adotada uma arquitetura em monolito** (HTML, 
 * **Interface Amigável:** Feedback visual imediato para erros de preenchimento.
 * **Padronização de Dados:** Geração de JSON estruturado pronto para consumo por APIs.
 
+## ⏭️ Próximos Passos
+O próximo passo natural para a evolução deste projeto é a construção de um **MVP (Minimum Viable Product)**. Esta próxima etapa contemplaria:
+* Separação das camadas de front-end e back-end.
+* Implementação das integrações reais com as APIs de consulta (SEFAZ/Sintegra, Receita Federal).
+* Conexão e envio automático do payload JSON estruturado diretamente para o ERP via integração sistêmica.
+
 ## 🛠️ Tecnologias Utilizadas
 * **HTML5, CSS3 & JavaScript (Vanilla):** Estrutura, estilização e lógica de validação contidas no monolito para máxima portabilidade e facilidade de teste.
 
@@ -32,8 +38,8 @@ Para esta Prova de Conceito, **foi adotada uma arquitetura em monolito** (HTML, 
 
 ## 📋 Como testar
 1. Clone este repositório.
-2. Abra o arquivo `formulario_inteligente_tobe.html` em qualquer navegador.
+2. Abra o arquivo `formulario_inteligente_to_be.html` em qualquer navegador.
 3. Teste o preenchimento para visualizar a validação em tempo real.
 
 ---
-*Desenvolvido por Sandro Monteiro | Case técnico para WAP Indústria*
+*Desenvolvido por Sandro Monteiro | Case técnico*
