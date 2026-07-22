@@ -59,7 +59,7 @@ Validação Inteligente dos dados inseridos</bpmn:text>
       <bpmn:incoming>Flow_1civ39j</bpmn:incoming>
       <bpmn:outgoing>Flow_12gg4fs</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="Activity_1558wy2" name="IV. Validar documentos: OCR/IA para leitura">
+    <bpmn:serviceTask id="Activity_1558wy2" name="II. Validar documentos: OCR/IA para leitura">
       <bpmn:incoming>Flow_1b8gm12</bpmn:incoming>
       <bpmn:outgoing>Flow_1oyf4v5</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -79,7 +79,7 @@ Validação Inteligente dos dados inseridos</bpmn:text>
       <bpmn:incoming>Flow_1jv6x65</bpmn:incoming>
       <bpmn:outgoing>Flow_0wduhzd</bpmn:outgoing>
     </bpmn:parallelGateway>
-    <bpmn:serviceTask id="Activity_0ilmxoz" name="II. Consultar Sintegra via api">
+    <bpmn:serviceTask id="Activity_0ilmxoz" name="III. Consultar Sintegra via api">
       <bpmn:incoming>Flow_0s3byte</bpmn:incoming>
       <bpmn:outgoing>Flow_1wcr3s9</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DataOutputAssociation_0h8ebt2">
@@ -105,7 +105,7 @@ Validação Inteligente dos dados inseridos</bpmn:text>
       <bpmn:outgoing>Flow_1pu2rf0</bpmn:outgoing>
       <bpmn:outgoing>Flow_00mb6d8</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:serviceTask id="Activity_1ovyovj" name="III. Consultar Limite Datasul BD">
+    <bpmn:serviceTask id="Activity_1ovyovj" name="IV. Consultar Limite ERP BD">
       <bpmn:incoming>Flow_00mb6d8</bpmn:incoming>
       <bpmn:incoming>Flow_17lvxeo</bpmn:incoming>
       <bpmn:outgoing>Flow_0jyi8cc</bpmn:outgoing>
@@ -117,7 +117,7 @@ Validação Inteligente dos dados inseridos</bpmn:text>
       <bpmn:incoming>Flow_0bw0ks4</bpmn:incoming>
       <bpmn:outgoing>Flow_17lvxeo</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:dataStoreReference id="DataStoreReference_1ji9u9w" name="Datasul" />
+    <bpmn:dataStoreReference id="DataStoreReference_1ji9u9w" name="ERP" />
     <bpmn:serviceTask id="Activity_015mbr5" name="Alertar usuário: End. Sintegra divergente">
       <bpmn:incoming>Flow_1pu2rf0</bpmn:incoming>
       <bpmn:outgoing>Flow_02bdecw</bpmn:outgoing>
@@ -159,7 +159,7 @@ Validação Inteligente dos dados inseridos</bpmn:text>
       <bpmn:outgoing>Flow_0ovw8tq</bpmn:outgoing>
       <bpmn:outgoing>Flow_0jltrqd</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:dataStoreReference id="DataStoreReference_14tqt8t" name="Datasul" />
+    <bpmn:dataStoreReference id="DataStoreReference_14tqt8t" name="ERP" />
     <bpmn:userTask id="Activity_0ccmtvf" name="I:Input de Dados: Digitar de CNPJ, Razão etc.">
       <bpmn:incoming>Flow_093hbsg</bpmn:incoming>
       <bpmn:incoming>Flow_0wduhzd</bpmn:incoming>
@@ -259,11 +259,11 @@ Validação Inteligente dos dados inseridos</bpmn:text>
         <dc:Bounds x="152" y="371" width="2308" height="1069" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_0t0dae9_di" bpmnElement="Lane_0t0dae9" isHorizontal="true">
-        <dc:Bounds x="182" y="1150" width="2278" height="290" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1jht5rh_di" bpmnElement="Lane_1jht5rh" isHorizontal="true">
         <dc:Bounds x="182" y="371" width="2278" height="779" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0t0dae9_di" bpmnElement="Lane_0t0dae9" isHorizontal="true">
+        <dc:Bounds x="182" y="1150" width="2278" height="290" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_0wrnphr" bpmnElement="Activity_068a6mx">
         <dc:Bounds x="432" y="719" width="100" height="80" />
@@ -320,7 +320,7 @@ Validação Inteligente dos dados inseridos</bpmn:text>
       <bpmndi:BPMNShape id="DataStoreReference_1ji9u9w_di" bpmnElement="DataStoreReference_1ji9u9w" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
         <dc:Bounds x="1257" y="614" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1263" y="584" width="38" height="14" />
+          <dc:Bounds x="1271" y="584" width="23" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_0eib3eg" bpmnElement="Activity_015mbr5">
@@ -372,7 +372,7 @@ Validação Inteligente dos dados inseridos</bpmn:text>
       <bpmndi:BPMNShape id="BPMNShape_1owf0uk" bpmnElement="DataStoreReference_14tqt8t" bioc:stroke="#0d4372" bioc:fill="#bbdefb" color:background-color="#bbdefb" color:border-color="#0d4372">
         <dc:Bounds x="1537" y="905" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1543" y="965" width="38" height="14" />
+          <dc:Bounds x="1551" y="965" width="23" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_1o78aaw" bpmnElement="Activity_0ccmtvf">
@@ -414,18 +414,24 @@ Validação Inteligente dos dados inseridos</bpmn:text>
           <dc:Bounds x="1775" y="1266" width="50" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_04k908f" bpmnElement="Event_03wfvvr" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
-        <dc:Bounds x="784" y="781" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="709" y="815" width="85" height="40" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_0791ys1" bpmnElement="Event_0d9j8ee" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
         <dc:Bounds x="1044" y="781" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="959" y="815" width="85" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_04k908f" bpmnElement="Event_03wfvvr" bioc:stroke="#831311" bioc:fill="#ffcdd2" color:background-color="#ffcdd2" color:border-color="#831311">
+        <dc:Bounds x="784" y="781" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="709" y="815" width="85" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1civ39j_di" bpmnElement="Flow_1civ39j">
+        <di:waypoint x="1012" y="1250" />
+        <di:waypoint x="1012" y="1080" />
+        <di:waypoint x="482" y="1080" />
+        <di:waypoint x="482" y="799" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12gg4fs_di" bpmnElement="Flow_12gg4fs">
         <di:waypoint x="532" y="759" />
         <di:waypoint x="597" y="759" />
@@ -522,6 +528,10 @@ Validação Inteligente dos dados inseridos</bpmn:text>
           <dc:Bounds x="1191" y="742" width="20" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_17lvxeo_di" bpmnElement="Flow_17lvxeo">
+        <di:waypoint x="1282" y="869" />
+        <di:waypoint x="1282" y="799" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0jyi8cc_di" bpmnElement="Flow_0jyi8cc">
         <di:waypoint x="1332" y="759" />
         <di:waypoint x="1387" y="759" />
@@ -548,18 +558,6 @@ Validação Inteligente dos dados inseridos</bpmn:text>
         <di:waypoint x="1612" y="759" />
         <di:waypoint x="1687" y="759" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_093hbsg_di" bpmnElement="Flow_093hbsg">
-        <di:waypoint x="370" y="1310" />
-        <di:waypoint x="432" y="1310" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0clwxqa_di" bpmnElement="Flow_0clwxqa">
-        <di:waypoint x="532" y="1290" />
-        <di:waypoint x="702" y="1290" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1ew5q99_di" bpmnElement="Flow_1ew5q99">
-        <di:waypoint x="802" y="1290" />
-        <di:waypoint x="962" y="1290" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0hh1xy4_di" bpmnElement="Flow_0hh1xy4">
         <di:waypoint x="1737" y="759" />
         <di:waypoint x="1810" y="759" />
@@ -575,10 +573,6 @@ Validação Inteligente dos dados inseridos</bpmn:text>
           <dc:Bounds x="1718" y="806.5" width="24" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1ilt3e9_di" bpmnElement="Flow_1ilt3e9">
-        <di:waypoint x="1910" y="759" />
-        <di:waypoint x="1975" y="759" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0ovw8tq_di" bpmnElement="Flow_0ovw8tq">
         <di:waypoint x="2025" y="759" />
         <di:waypoint x="2100" y="759" />
@@ -590,13 +584,9 @@ Validação Inteligente dos dados inseridos</bpmn:text>
         <di:waypoint x="2150" y="799" />
         <di:waypoint x="2150" y="1262" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_11mapat_di" bpmnElement="Flow_11mapat">
-        <di:waypoint x="1860" y="949" />
-        <di:waypoint x="1860" y="1010" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0sgeb03_di" bpmnElement="Flow_0sgeb03">
-        <di:waypoint x="1860" y="1090" />
-        <di:waypoint x="1860" y="1262" />
+      <bpmndi:BPMNEdge id="Flow_1ilt3e9_di" bpmnElement="Flow_1ilt3e9">
+        <di:waypoint x="1910" y="759" />
+        <di:waypoint x="1975" y="759" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0jltrqd_di" bpmnElement="Flow_0jltrqd">
         <di:waypoint x="2000" y="784" />
@@ -606,15 +596,25 @@ Validação Inteligente dos dados inseridos</bpmn:text>
           <dc:Bounds x="2005" y="804" width="20" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_17lvxeo_di" bpmnElement="Flow_17lvxeo">
-        <di:waypoint x="1282" y="869" />
-        <di:waypoint x="1282" y="799" />
+      <bpmndi:BPMNEdge id="Flow_093hbsg_di" bpmnElement="Flow_093hbsg">
+        <di:waypoint x="370" y="1310" />
+        <di:waypoint x="432" y="1310" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1civ39j_di" bpmnElement="Flow_1civ39j">
-        <di:waypoint x="1012" y="1250" />
-        <di:waypoint x="1012" y="1080" />
-        <di:waypoint x="482" y="1080" />
-        <di:waypoint x="482" y="799" />
+      <bpmndi:BPMNEdge id="Flow_0clwxqa_di" bpmnElement="Flow_0clwxqa">
+        <di:waypoint x="532" y="1290" />
+        <di:waypoint x="702" y="1290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ew5q99_di" bpmnElement="Flow_1ew5q99">
+        <di:waypoint x="802" y="1290" />
+        <di:waypoint x="962" y="1290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_11mapat_di" bpmnElement="Flow_11mapat">
+        <di:waypoint x="1860" y="949" />
+        <di:waypoint x="1860" y="1010" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0sgeb03_di" bpmnElement="Flow_0sgeb03">
+        <di:waypoint x="1860" y="1090" />
+        <di:waypoint x="1860" y="1262" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="BPMNShape_0btn2ty" bpmnElement="Participant_1hxqm4c" isHorizontal="true">
         <dc:Bounds x="152" y="80" width="2308" height="290" />
@@ -632,10 +632,18 @@ Validação Inteligente dos dados inseridos</bpmn:text>
           <dc:Bounds x="2204" y="285" width="71" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow_0xsf9dq_di" bpmnElement="Flow_0xsf9dq">
-        <di:waypoint x="1442" y="441" />
-        <di:waypoint x="1442" y="328" />
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_1pkcdo9_di" bpmnElement="TextAnnotation_1pkcdo9">
+        <dc:Bounds x="199" y="1360" width="192" height="57" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0y0tiub" bpmnElement="TextAnnotation_1usi66r">
+        <dc:Bounds x="197" y="1080" width="163" height="57" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1mpamk8" bpmnElement="TextAnnotation_1huyws0">
+        <dc:Bounds x="195" y="310" width="167.21723044397467" height="40" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="DataOutputAssociation_0h8ebt2_di" bpmnElement="DataOutputAssociation_0h8ebt2">
         <di:waypoint x="1012" y="719" />
         <di:waypoint x="1012" y="664" />
@@ -652,24 +660,16 @@ Validação Inteligente dos dados inseridos</bpmn:text>
         <di:waypoint x="1810" y="931" />
         <di:waypoint x="1587" y="931" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0xsf9dq_di" bpmnElement="Flow_0xsf9dq">
+        <di:waypoint x="1442" y="441" />
+        <di:waypoint x="1442" y="328" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1xns88y_di" bpmnElement="Flow_1xns88y">
         <di:waypoint x="1860" y="1300" />
         <di:waypoint x="1860" y="1380" />
         <di:waypoint x="2300" y="1380" />
         <di:waypoint x="2300" y="328" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="TextAnnotation_1pkcdo9_di" bpmnElement="TextAnnotation_1pkcdo9">
-        <dc:Bounds x="199" y="1360" width="192" height="57" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_1mpamk8" bpmnElement="TextAnnotation_1huyws0">
-        <dc:Bounds x="195" y="310" width="167.21723044397467" height="40" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="BPMNShape_0y0tiub" bpmnElement="TextAnnotation_1usi66r">
-        <dc:Bounds x="197" y="1080" width="163" height="57" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
